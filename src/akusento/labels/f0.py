@@ -7,8 +7,9 @@ pyworld is the M1 workhorse (fast, CPU); torchcrepe spot-checks a subset
 
 from __future__ import annotations
 
-import numpy as np
 from typing import Any
+
+import numpy as np
 
 
 def extract_f0(wav: np.ndarray, sr: int, frame_ms: float = 5.0) -> dict[str, Any]:
