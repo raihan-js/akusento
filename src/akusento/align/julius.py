@@ -9,35 +9,38 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
+from typing import Any
 
 from akusento.labels.accent import _parse_row
 
 _LAB_RE = re.compile(r"^(\d+)\s+(\d+)\s+(.+)$")
 
 
-def parse_lab(path: str | Path) -> list[dict]:
-    """Parse one .lab file -> [{start, end, phon, a}]. Pauses kept (a None)."""
-    out = []
+def parse_lab(path: str | Path) -> list[dict[str, Any]]:
+    """Parse one .lab file -> [{start, end, phon, a, fid}]. Pauses kept (a None)."""
+    out: list[dict[str, Any]] = []
     for line in Path(path).read_text(encoding="utf-8").splitlines():
         m = _LAB_RE.match(line.strip())
         if not m:
             continue
         start, end = int(m.group(1)) / 1e7, int(m.group(2)) / 1e7
-        p3, a, _ = _parse_row(m.group(3))
-        out.append({"start": start, "end": end, "phon": p3, "a": a})
+        p3, a, fid = _parse_row(m.group(3))
+        out.append({"start": start, "end": end, "phon": p3, "a": a, "fid": fid})
     return out
 
 
-def mora_segments(lab_rows: list[dict]) -> list[dict]:
+def mora_segments(lab_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Group phoneme rows into mora segments by A2 runs (pauses dropped).
 
     Returns [{start, end, a2, a1}]; one entry per mora, in order.
     """
     content = [r for r in lab_rows if r["a"] is not None]
-    segs = []
+    segs: list[dict[str, Any]] = []
     for r in content:
-        if segs and segs[-1]["a2"] == r["a"][1]:
+        a = r["a"]
+        assert isinstance(a, tuple)
+        if segs and segs[-1]["a2"] == a[1]:
             segs[-1]["end"] = r["end"]
         else:
-            segs.append({"start": r["start"], "end": r["end"], "a2": r["a"][1], "a1": r["a"][0]})
+            segs.append({"start": r["start"], "end": r["end"], "a2": a[1], "a1": a[0]})
     return segs

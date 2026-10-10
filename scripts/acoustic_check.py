@@ -1,15 +1,16 @@
 """Acoustic cross-check of OpenJTalk labels (fills heard_ok HONESTLY).
 
 No fluent listener is available (owner disclosed not a speaker; agent cannot
-hear). Instead: for each mora get mean F0 from aligned audio, convert to
-semitones rel. utterance median, and check predicted H/L directions:
-- fall: F0(nucleus) > F0(nucleus+1)   (phrases with nucleus)
-- rise: F0(mora2) > F0(mora1)         (multi-mora phrases)
-- level: |F0 diffs| small across heiban tail (informational only)
-Morae with <30% voiced frames or |diff|<=0.5st are 'unclear' (excluded).
-heard_ok = 1 iff every CHECKABLE phrase passes; note records the counts.
-This measures label-vs-acoustics agreement, NOT human correctness. The
-write-up states exactly that. results/acoustic_check.jsonl holds per-phrase data.
+hear). Instead: for each adjacent mora pair inside a phrase, compare the
+PREDICTED direction (from H/L labels) with the MEASURED F0 direction
+(semitones rel. utterance median, 0.5st deadband):
+- L->H predicted, measured up: agree; measured down: CONTRADICT; else unclear.
+- H->L predicted, measured down: agree; measured up: CONTRADICT; else unclear.
+- level pairs (H-H, L-L): informational (downdrift makes them unreliable).
+heard_ok = 1 iff zero contradictions and >=1 agreement (undershoot is not
+contradiction: phonological targets undershoot routinely in running speech).
+This measures label-vs-acoustics CONTRADICTION rate, NOT human correctness.
+results/acoustic_check.jsonl holds per-transition data.
 """
 
 from __future__ import annotations
@@ -48,35 +49,46 @@ def check_utterance(utt_id: str, phrases: list[dict]) -> dict:
             flat_means.append(float(12 * np.log2(f0[m].mean() / med)))
         else:
             flat_means.append(None)
-    out_phrases = []
+    out_trans = []
     pos = 0
-    npass = ncheck = 0
+    agree = contra = unclear = 0
     for p in phrases:
         n = len(p["morae"])
         means = flat_means[pos:pos + n]
         pos += n
-        checks = []
-        def get(i: int, _means: list = means, _n: int = n) -> float | None:
-            return _means[i] if 0 <= i < _n else None
-        if p["nucleus"] is not None and n > 1:
-            a, b = get(p["nucleus"] - 1), get(p["nucleus"])
-            if a is not None and b is not None and abs(a - b) > ST:
-                checks.append(("fall", a > b))
-        if n > 1:
-            a, b = get(0), get(1)
-            if a is not None and b is not None and abs(a - b) > ST:
-                checks.append(("rise", b > a))
-        ok = [c for _, c in checks]
-        if ok:
-            ncheck += 1
-            npass += all(ok)
-        out_phrases.append({"pattern": p["pattern"], "checks": checks})
-    return {"utt_id": utt_id, "phrases": out_phrases,
-            "checked": ncheck, "passed": npass,
-            "verdict": bool(ncheck and npass == ncheck)}
+        for i in range(n - 1):
+            a, b = means[i], means[i + 1]
+            la = p["morae"][i]["h"]
+            lb = p["morae"][i + 1]["h"]
+            if a is None or b is None:
+                unclear += 1
+                continue
+            d = b - a
+            if la == lb:
+                out_trans.append({"pair": (p["morae"][i]["t"], p["morae"][i + 1]["t"]),
+                                  "pred": "level", "diff_st": round(d, 2)})
+                continue
+            expect_up = (not la and lb)
+            if abs(d) <= ST:
+                unclear += 1
+                status = "unclear"
+            elif (d > 0) == expect_up:
+                agree += 1
+                status = "agree"
+            else:
+                contra += 1
+                status = "CONTRADICT"
+            out_trans.append({"pair": (p["morae"][i]["t"], p["morae"][i + 1]["t"]),
+                              "pred": "up" if expect_up else "down",
+                              "diff_st": round(d, 2), "status": status})
+    verdict = bool(contra == 0 and agree >= 1)
+    return {"utt_id": utt_id, "transitions": out_trans, "agree": agree,
+            "contradict": contra, "unclear": unclear, "verdict": verdict}
 
 
 def main(csv_path: str = "results/fluent_check.csv") -> None:
+    from akusento.labels.accent import extract_from_lab
+
     labels = {}
     for line in Path("results/labels_500.jsonl").read_text(encoding="utf-8").splitlines():
         r = json.loads(line)
@@ -91,16 +103,25 @@ def main(csv_path: str = "results/fluent_check.csv") -> None:
                 r["note"] = "missing audio/alignment"
                 continue
             try:
+                # Train/eval only on cross-version-agreed utterances: file
+                # labels (2017 OpenJTalk, era-consistent with audio) vs current
+                # pyopenjtalk must give identical patterns, else skip honestly.
+                file_pats = [p.pattern for p in extract_from_lab(str(LAB_DIR / f"{uid}.lab"))]
+                mine_pats = [p["pattern"] for p in labels.get(uid, [])]
+                if file_pats != mine_pats:
+                    r["note"] = "version drift (label sets disagree) — skipped"
+                    continue
                 res = check_utterance(uid, labels.get(uid, []))
             except Exception as e:  # noqa: BLE001
                 r["note"] = f"error: {type(e).__name__}"
                 continue
             jf.write(json.dumps(res, ensure_ascii=False) + "\n")
-            if res["checked"] == 0:
-                r["note"] = "no checkable phrases"
+            if res["agree"] + res["contradict"] == 0:
+                r["note"] = "no checkable transitions"
                 continue
             r["heard_ok"] = "1" if res["verdict"] else "0"
-            r["note"] = f"acoustic {res['passed']}/{res['checked']} phrases agree (NOT a human check)"
+            r["note"] = (f"acoustic: {res['agree']} agree, {res['contradict']} contradict, "
+                         f"{res['unclear']} unclear (NOT a human check)")
             filled += 1
     with open(csv_path, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["utt_id", "text", "predicted", "wav", "heard_ok", "note"])

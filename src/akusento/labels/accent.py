@@ -88,12 +88,61 @@ def split_morae(pron: str) -> list[str]:
 
 
 
+def phrases_from_rows(rows: list[tuple[str, tuple[int, int, int] | None, str]]) -> list[list[tuple[int, int, int]]]:
+    """Segment parsed label rows into phrases (F-change / A2-reset / pause).
+
+    Shared by extract() (pyopenjtalk rows) and file-derived labels (jsut-lab
+    rows) so both paths group identically.
+    """
+    lab_phrases: list[tuple[str, list[tuple[int, int, int]]]] = []
+    cur: list[tuple[int, int, int]] = []
+    cur_fid = ""
+    for _, a, fid in rows:
+        if a is None:
+            if cur:
+                lab_phrases.append((cur_fid, cur))
+                cur = []
+                cur_fid = ""
+            continue
+        if cur and (fid != cur_fid or (a[1] == 1 and cur[-1][1] > 1)):
+            lab_phrases.append((cur_fid, cur))
+            cur = []
+            cur_fid = ""
+        if not cur:
+            cur_fid = fid
+        cur.append(a)
+    if cur:
+        lab_phrases.append((cur_fid, cur))
+    return [rows for _, rows in lab_phrases]
+
+
+def accent_phrase(mora_groups: list[list[tuple[int, int, int]]], texts: list[str]) -> AccentPhrase:
+    """H/L assignment for one phrase (Kurihara fall detection)."""
+    n = len(mora_groups)
+    a1s = [g[0][0] for g in mora_groups]
+    nucleus: int | None = None
+    for i, a1 in enumerate(a1s):
+        if a1 == 0 and i + 1 < n:
+            nucleus = i + 1  # 1-indexed
+    ap = AccentPhrase(nucleus=nucleus)
+    for i, tm in enumerate(texts, start=1):
+        if n == 1:
+            high = True
+        elif nucleus == 1:
+            high = (i == 1)
+        elif nucleus is None:
+            high = (i > 1)
+        else:
+            high = (1 < i <= nucleus)
+        ap.morae.append(Mora(text=tm, high=high))
+    return ap
+
+
 def _njd_phrases(text: str) -> list[list[str]]:
-    """Chunk the text into accent phrases via NJD chain_flag.
+    """Chunk the text into accent phrases via NJD chain_flag (mora TEXT).
 
     A word with chain_flag == 1 attaches to the previous word (same phrase);
-    otherwise it starts a new phrase. Punctuation always ends a phrase
-    (labels emit pause rows there). Returns per-phrase katakana mora lists.
+    otherwise it starts a new phrase. Punctuation always ends a phrase.
     """
     _PUNCT = set("、。？！「」『』…―")
     phrases: list[list[str]] = []
@@ -126,34 +175,12 @@ def extract(text: str) -> list[AccentPhrase]:
     """
     labels = pyopenjtalk.extract_fullcontext(text)
     rows = [_parse_row(lab) for lab in labels]
-    # Segment label rows. A boundary falls before a row iff any fires:
-    # F-field change, A2 reset (prev>1 to 1), or a pause row between
-    # (pauses only sit at real boundaries; they are dropped, never morae).
-    lab_phrases: list[tuple[str, list[tuple[int, int, int]]]] = []
-    cur: list[tuple[int, int, int]] = []
-    cur_fid = ""
-    for _, a, fid in rows:
-        if a is None:
-            if cur:
-                lab_phrases.append((cur_fid, cur))
-                cur = []
-                cur_fid = ""
-            continue
-        if cur and (fid != cur_fid or (a[1] == 1 and cur[-1][1] > 1)):
-            lab_phrases.append((cur_fid, cur))
-            cur = []
-            cur_fid = ""
-        if not cur:
-            cur_fid = fid
-        cur.append(a)
-    if cur:
-        lab_phrases.append((cur_fid, cur))
+    lab_phrases = phrases_from_rows(rows)
     njd = _njd_phrases(text)
     if len(lab_phrases) != len(njd):
         raise ValueError(f"phrase count mismatch: njd={len(njd)} labels={len(lab_phrases)} in {text!r}")
     result: list[AccentPhrase] = []
-    for (fid, lrows), pmorae in zip(lab_phrases, njd):
-        f1 = int(fid.split("#")[0].split("_")[0])
+    for lrows, pmorae in zip(lab_phrases, njd):
         # Morae: group phonemes by A2 within the phrase.
         mora_groups: list[list[tuple[int, int, int]]] = []
         for a in lrows:
@@ -161,26 +188,33 @@ def extract(text: str) -> list[AccentPhrase]:
                 mora_groups[-1].append(a)
             else:
                 mora_groups.append([a])
-        if not (len(mora_groups) == len(pmorae) == f1):
+        if len(mora_groups) != len(pmorae):
             raise ValueError(
-                f"phrase mora mismatch: njd={len(pmorae)} labels={len(mora_groups)} F1={f1} in {text!r}")
-        n = len(mora_groups)
-        # Fall detection: mora with a1==0 whose NEXT mora exists (Kurihara ]).
-        a1s = [g[0][0] for g in mora_groups]
-        nucleus: int | None = None
-        for i, a1 in enumerate(a1s):
-            if a1 == 0 and i + 1 < n:
-                nucleus = i + 1  # 1-indexed
-        ap = AccentPhrase(nucleus=nucleus)
-        for i, tm in enumerate(pmorae, start=1):
-            if n == 1:
-                high = True
-            elif nucleus == 1:
-                high = (i == 1)
-            elif nucleus is None:
-                high = (i > 1)
-            else:
-                high = (1 < i <= nucleus)
-            ap.morae.append(Mora(text=tm, high=high))
-        result.append(ap)
+                f"phrase mora mismatch: njd={len(pmorae)} labels={len(mora_groups)} in {text!r}")
+        result.append(accent_phrase(mora_groups, pmorae))
     return result
+
+
+def extract_from_lab(lab_path: str) -> list[AccentPhrase]:
+    """Labels straight from a jsut-lab .lab file (same grouping as extract).
+
+    Mora text is empty (use transcripts for display); accent structure is what
+    matters for training. Comparing these patterns against extract() on the
+    same text measures OpenJTalk version drift.
+    """
+    from akusento.align.julius import parse_lab
+
+    triples: list[tuple[str, tuple[int, int, int] | None, str]] = [
+        (str(r["phon"]), r["a"] if isinstance(r["a"], tuple) else None, str(r["fid"]))
+        for r in parse_lab(lab_path)
+    ]
+    out = []
+    for g in phrases_from_rows(triples):
+        mg: list[list[tuple[int, int, int]]] = []
+        for a in g:
+            if mg and mg[-1][0][1] == a[1]:
+                mg[-1].append(a)
+            else:
+                mg.append([a])
+        out.append(accent_phrase(mg, ["?"] * len(mg)))
+    return out

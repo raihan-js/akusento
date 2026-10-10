@@ -28,7 +28,7 @@ def accuracy(clf: LogisticRegression, sc: StandardScaler, X: np.ndarray, y: np.n
     return float(clf.score(sc.transform(X), y))
 
 
-def save(path: str | Path, sc: StandardScaler, clf: LogisticRegression, meta: dict) -> None:
+def save(path: str | Path, sc: StandardScaler, clf: LogisticRegression, meta: dict[str, object]) -> None:
     import pickle
 
     path = Path(path)
@@ -37,7 +37,7 @@ def save(path: str | Path, sc: StandardScaler, clf: LogisticRegression, meta: di
         pickle.dump({"scaler": sc, "clf": clf, "meta": meta}, f)
 
 
-def load(path: str | Path) -> tuple[StandardScaler, LogisticRegression, dict]:
+def load(path: str | Path) -> tuple[StandardScaler, LogisticRegression, dict[str, object]]:
     import pickle
 
     with open(path, "rb") as f:
