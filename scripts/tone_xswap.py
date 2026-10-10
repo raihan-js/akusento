@@ -5,9 +5,8 @@ controls output, each render's F0/scorer output follows the TONES, not text.
 Metric: our scorer's mora H/L on each render vs forced pattern + F0 flip rate.
 """
 
-from pathlib import Path
-
 import math
+from pathlib import Path
 
 import numpy as np
 from scipy.io import wavfile
