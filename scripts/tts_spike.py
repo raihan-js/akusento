@@ -34,7 +34,7 @@ def synth(text, tones=None, tag="out", style="Neutral"):
         net.float()
     kw = {}
     if tones is not None:
-        phones, auto_tones, _ = g2p(text)
+        phones, _, _ = g2p(text)
         assert len(phones) == len(tones), (len(phones), len(tones))
         kw = {"given_phone": phones, "given_tone": tones}
     sr, wav = model.infer(text=text, style=style, line_split=False, **kw)
