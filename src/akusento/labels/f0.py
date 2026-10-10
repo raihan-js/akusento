@@ -10,9 +10,10 @@ from __future__ import annotations
 from typing import Any
 
 import numpy as np
+import numpy.typing as npt
 
 
-def extract_f0(wav: np.ndarray, sr: int, frame_ms: float = 5.0) -> dict[str, Any]:
+def extract_f0(wav: npt.NDArray[np.float64], sr: int, frame_ms: float = 5.0) -> dict[str, Any]:
     import pyworld as pw
 
     x = np.asarray(wav, dtype=np.float64)
@@ -31,7 +32,7 @@ def extract_f0(wav: np.ndarray, sr: int, frame_ms: float = 5.0) -> dict[str, Any
     }
 
 
-def load_wav_mono(path: str, target_sr: int = 16000) -> tuple[np.ndarray, int]:
+def load_wav_mono(path: str, target_sr: int = 16000) -> tuple[npt.NDArray[np.float64], int]:
     """Load + resample to mono target_sr with scipy only (no librosa).
 
     (librosa 1.x needs numpy 2, which breaks pyopenjtalk's ABI in this env;

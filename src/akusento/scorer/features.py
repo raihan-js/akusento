@@ -10,9 +10,10 @@ first-third mean, semitones). Target: H/L from OpenJTalk labels
 from __future__ import annotations
 
 import numpy as np
+import numpy.typing as npt
 
 
-def mora_features(f0: np.ndarray, t: np.ndarray, start: float, end: float,
+def mora_features(f0: npt.NDArray[np.float64], t: npt.NDArray[np.float64], start: float, end: float,
                   med: float, pos_in_phrase: int, phrase_len: int) -> list[float] | None:
     """Feature vector or None when the mora has too little voicing."""
     m = (t >= start) & (t < end) & (f0 > 0)
