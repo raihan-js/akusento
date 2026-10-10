@@ -30,3 +30,39 @@ def mora_features(f0: npt.NDArray[np.float64], t: npt.NDArray[np.float64], start
 
 FEATURE_NAMES = ["f0_mean_st", "f0_std", "f0_min", "f0_max", "voiced_rate",
                  "log_dur", "pos_in_phrase", "phrase_len", "slope_st"]
+# v2 appends phrase-relative context (promoted 2026-10-11).
+FEATURE_NAMES_V2 = FEATURE_NAMES + ["cur_rel_phrase_st", "prev_rel_phrase_st", "next_rel_phrase_st"]
+
+
+def phrase_feature_matrix(f0: np.ndarray, t: np.ndarray, segs: list[dict],
+                          n_morae: int) -> tuple[np.ndarray, list[bool]]:
+    """v2 feature rows for one phrase's mora segments (equal order).
+
+    Phrase-median normalization (downstep-robust) + neighbor context.
+    Returns (X, valid): rows with too little voicing are zero-filled and
+    flagged invalid (caller decides; training skips them).
+    """
+    pm: list[float | None] = []
+    for s in segs:
+        m = (t >= float(s["start"])) & (t < float(s["end"])) & (f0 > 0)
+        pm.append(float(np.median(f0[m])) if m.sum() >= 3 else None)
+    ok = [v for v in pm if v is not None]
+    pmed = float(np.median(ok)) if ok else 0.0
+    rows: list[list[float]] = []
+    valid: list[bool] = []
+    for j, s in enumerate(segs):
+        f = mora_features(f0, t, float(s["start"]), float(s["end"]), pmed, j + 1, n_morae)
+        rows.append(f if f is not None else [0.0] * len(FEATURE_NAMES))
+        valid.append(f is not None)
+    X = np.array(rows)
+    ctx = []
+    for j in range(n_morae):
+        cur = pm[j] if pm[j] is not None else pmed
+        prevm = pm[j - 1] if j > 0 and pm[j - 1] is not None else pmed
+        nextm = pm[j + 1] if j + 1 < n_morae and pm[j + 1] is not None else pmed
+        if pmed <= 0:
+            ctx.append([0.0, 0.0, 0.0])
+        else:
+            ctx.append([float(12 * np.log2(cur / pmed)), float(12 * np.log2(prevm / pmed)),
+                        float(12 * np.log2(nextm / pmed))])
+    return np.hstack([X, np.array(ctx)]), valid

@@ -1,0 +1,7 @@
+{
+  "n_train": 9085,
+  "n_test": 2020,
+  "baseline": 0.504,
+  "v2_accuracy": 0.7886,
+  "v1_accuracy": 0.7361
+}

@@ -4,7 +4,7 @@
   "n_train_morae": 9085,
   "n_test_morae": 2020,
   "baseline_majority": 0.504,
-  "mora_accuracy": 0.7361,
-  "word_accent_accuracy": 0.2372,
-  "word_phrases": 409
+  "mora_accuracy": 0.7886,
+  "word_accent_accuracy": 0.4598,
+  "word_phrases": 398
 }

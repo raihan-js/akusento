@@ -79,7 +79,7 @@ def check_recording(word, audio):
     sys.path.insert(0, str(APP_DIR / "src"))
     from akusento.labels.accent import extract
     from akusento.labels.f0 import extract_f0
-    from akusento.scorer.features import mora_features
+    from akusento.scorer.features import phrase_feature_matrix
 
     if not word or not word.strip() or audio is None:
         return "type a word and record audio first", ""
@@ -103,21 +103,19 @@ def check_recording(word, audio):
     idx = np.where(f0 > 0)[0]
     if len(idx) < 30:
         return exp, "too little voicing detected"
-    med = float(np.median(f0[idx]))
     heard_bits = []
     pos = 0
     nmorae = sum(len(p.morae) for p in phrases)
     bounds = np.array_split(idx, nmorae)
     for p in phrases:
+        n = len(p.morae)
+        chunk = bounds[pos:pos + n]
+        pos += n
+        pseudo = [{"start": float(t[c[0]]), "end": float(t[c[-1]]) + 0.005} if len(c) else {"start": 0.0, "end": 0.0} for c in chunk]
+        Xm, valid = phrase_feature_matrix(f0, t, pseudo, n)
+        pred = clf.predict(sc.transform(Xm))
         for j, m in enumerate(p.morae):
-            ch = bounds[pos]
-            pos += 1
-            s, e = (t[ch[0]], t[ch[-1]]) if len(ch) else (0, 0)
-            f = mora_features(f0, t, s, e, med, j + 1, len(p.morae))
-            if f is None:
-                heard_bits.append("?")
-            else:
-                heard_bits.append("H" if clf.predict(sc.transform([f]))[0] else "L")
+            heard_bits.append("?" if not valid[j] else ("H" if pred[j] else "L"))
     heard = "".join(heard_bits)
     expflat = "".join(p.pattern for p in phrases)
     mark = "MATCH ✓" if heard.replace("?", "") and all(
