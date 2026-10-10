@@ -9,6 +9,8 @@ first-third mean, semitones). Target: H/L from OpenJTalk labels
 
 from __future__ import annotations
 
+from typing import Any
+
 import numpy as np
 import numpy.typing as npt
 
@@ -34,8 +36,9 @@ FEATURE_NAMES = ["f0_mean_st", "f0_std", "f0_min", "f0_max", "voiced_rate",
 FEATURE_NAMES_V2 = FEATURE_NAMES + ["cur_rel_phrase_st", "prev_rel_phrase_st", "next_rel_phrase_st"]
 
 
-def phrase_feature_matrix(f0: np.ndarray, t: np.ndarray, segs: list[dict],
-                          n_morae: int) -> tuple[np.ndarray, list[bool]]:
+def phrase_feature_matrix(f0: npt.NDArray[np.float64], t: npt.NDArray[np.float64],
+                          segs: list[dict[str, Any]],
+                          n_morae: int) -> tuple[npt.NDArray[np.float64], list[bool]]:
     """v2 feature rows for one phrase's mora segments (equal order).
 
     Phrase-median normalization (downstep-robust) + neighbor context.
