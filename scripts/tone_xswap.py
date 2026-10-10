@@ -7,6 +7,8 @@ Metric: our scorer's mora H/L on each render vs forced pattern + F0 flip rate.
 
 from pathlib import Path
 
+import math
+
 import numpy as np
 from scipy.io import wavfile
 from style_bert_vits2.nlp.japanese.g2p import g2p
@@ -34,7 +36,7 @@ def main():
             p = Path(f"results/xswap_{tag}.wav")
             wavfile.write(p, sr, wav)
             f = phone_f0(wav, sr, len(pa))
-            res[tag] = {"tones": tones, "f0": [round(float(x), 2) if x == x else None for x in f]}
+            res[tag] = {"tones": tones, "f0": [round(float(x), 2) if not math.isnan(x) else None for x in f]}
         # Control score: does AwithB's contour match Bauto better than Aauto?
         def vec(d):
             v = np.array(d, dtype=float)
