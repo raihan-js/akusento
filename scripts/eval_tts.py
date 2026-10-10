@@ -9,6 +9,7 @@ control comparison). For adjacent phone pairs with a predicted direction
 Writes results/tts_eval.json.
 """
 
+import math
 from pathlib import Path
 
 from minimal_pairs import GROUPS
@@ -22,7 +23,7 @@ def dir_agree(tones, f0):
     for i in range(len(tones) - 1):
         a, b = tones[i], tones[i + 1]
         x, y = f0[i], f0[i + 1]
-        if a == b or x != x or y != y:
+        if a == b or math.isnan(x) or math.isnan(y):
             continue
         d = y - x
         if abs(d) <= 0.5:

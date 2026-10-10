@@ -59,7 +59,8 @@ def main():
             s = f"{w}がいい。"
             try:
                 g2p(s)
-            except Exception:  # noqa: BLE001
+            except Exception as e:  # noqa: BLE001
+                print(f"skip {s}: {type(e).__name__}")
                 continue
             sr, wav = model.infer(text=s, line_split=False)
             p = Path(f"results/cer_{n:03d}.wav")
