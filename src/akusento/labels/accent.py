@@ -62,11 +62,6 @@ class AccentPhrase:
         return "".join("H" if m.high else "L" for m in self.morae)
 
 
-def _mora_positions(labels: list[str]) -> list[tuple[int, int, int]]:
-    """Per-phoneme (a1, a2, a3); pauses dropped."""
-    return [a for _, a in (_parse_row(lab) for lab in labels) if a is not None]
-
-
 _KATAKANA_SMALL_Y = set("ャュョァィゥェォ")
 _SOKUON = "ッ"
 _HATSUON = "ン"
