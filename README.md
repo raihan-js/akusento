@@ -13,3 +13,8 @@ cloned for any demo without consent.
 ## Layout
 `src/akusento/{labels,align,scorer,tts,eval,cli}` · `tests/` · `docs/` ·
 `examples/` · `results/` (small JSON, committed) · `data/` (gitignored)
+
+## Demo
+Live (static, pre-rendered): https://raihan-js-akusento-demo.hf.space —
+24 minimal pairs, correct vs flipped accent. Full interactive app
+(`app.py`, needs GPU/CPU TTS locally): `../.venv-tts/bin/python app.py`.
