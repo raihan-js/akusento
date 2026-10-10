@@ -1,0 +1,486 @@
+{
+  "cer_kana": 0.1053,
+  "n": 60,
+  "rows": [
+    {
+      "text": "箸がいい。",
+      "hyp": "足がいい",
+      "cer": 0.25,
+      "kana_ref": "ハシガイイ",
+      "kana_hyp": "アシガイイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "橋がいい。",
+      "hyp": "足がいい",
+      "cer": 0.25,
+      "kana_ref": "ハシガイイ",
+      "kana_hyp": "アシガイイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "端がいい。",
+      "hyp": "足がいい",
+      "cer": 0.25,
+      "kana_ref": "ハシガイイ",
+      "kana_hyp": "アシガイイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "嘴がいい。",
+      "hyp": "くちばしがいい",
+      "cer": 1.0,
+      "kana_ref": "クチバシガイイ",
+      "kana_hyp": "クチバシガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "雨がいい。",
+      "hyp": "雨がいい",
+      "cer": 0.0,
+      "kana_ref": "アメガイイ",
+      "kana_hyp": "アメガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "飴がいい。",
+      "hyp": "雨がいい",
+      "cer": 0.25,
+      "kana_ref": "アメガイイ",
+      "kana_hyp": "アメガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "酒がいい。",
+      "hyp": "酒がいい",
+      "cer": 0.0,
+      "kana_ref": "サケガイイ",
+      "kana_hyp": "サケガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "鮭がいい。",
+      "hyp": "酒がいい",
+      "cer": 0.25,
+      "kana_ref": "サケガイイ",
+      "kana_hyp": "サケガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "柿がいい。",
+      "hyp": "書きがいい",
+      "cer": 0.5,
+      "kana_ref": "カキガイイ",
+      "kana_hyp": "ガキガイイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "牡蠣がいい。",
+      "hyp": "柿がいい",
+      "cer": 0.4,
+      "kana_ref": "カキガイイ",
+      "kana_hyp": "カキガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "垣がいい。",
+      "hyp": "書きがいい",
+      "cer": 0.5,
+      "kana_ref": "カキガイイ",
+      "kana_hyp": "ガキガイイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "花がいい。",
+      "hyp": "花がいい",
+      "cer": 0.0,
+      "kana_ref": "ハナガイイ",
+      "kana_hyp": "ハナガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "鼻がいい。",
+      "hyp": "鼻がいい",
+      "cer": 0.0,
+      "kana_ref": "ハナガイイ",
+      "kana_hyp": "ハナガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "神がいい。",
+      "hyp": "カミガエ",
+      "cer": 1.0,
+      "kana_ref": "カミガイイ",
+      "kana_hyp": "カミガエ",
+      "cer_kana": 0.4
+    },
+    {
+      "text": "紙がいい。",
+      "hyp": "神がいい",
+      "cer": 0.25,
+      "kana_ref": "カミガイイ",
+      "kana_hyp": "カミガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "髪がいい。",
+      "hyp": "神がいい",
+      "cer": 0.25,
+      "kana_ref": "カミガイイ",
+      "kana_hyp": "カミガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "雲がいい。",
+      "hyp": "相撲がいい",
+      "cer": 0.5,
+      "kana_ref": "クモガイイ",
+      "kana_hyp": "スモーガイイ",
+      "cer_kana": 0.4
+    },
+    {
+      "text": "蜘蛛がいい。",
+      "hyp": "クモがいい",
+      "cer": 0.4,
+      "kana_ref": "クモガイイ",
+      "kana_hyp": "クモガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "足がいい。",
+      "hyp": "足がいい",
+      "cer": 0.0,
+      "kana_ref": "アシガイイ",
+      "kana_hyp": "アシガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "脚がいい。",
+      "hyp": "足がいい",
+      "cer": 0.25,
+      "kana_ref": "アシガイイ",
+      "kana_hyp": "アシガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "葦がいい。",
+      "hyp": "足がいい",
+      "cer": 0.25,
+      "kana_ref": "アシガイイ",
+      "kana_hyp": "アシガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "桃がいい。",
+      "hyp": "桃がいい",
+      "cer": 0.0,
+      "kana_ref": "モモガイイ",
+      "kana_hyp": "モモガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "腿がいい。",
+      "hyp": "桃がいい",
+      "cer": 0.25,
+      "kana_ref": "モモガイイ",
+      "kana_hyp": "モモガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "隅がいい。",
+      "hyp": "罪がいい",
+      "cer": 0.25,
+      "kana_ref": "スミガイイ",
+      "kana_hyp": "ツミガイイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "炭がいい。",
+      "hyp": "スミがいい",
+      "cer": 0.5,
+      "kana_ref": "スミガイイ",
+      "kana_hyp": "スミガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "竹がいい。",
+      "hyp": "竹がいい",
+      "cer": 0.0,
+      "kana_ref": "タケガイイ",
+      "kana_hyp": "タケガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "丈がいい。",
+      "hyp": "たけがい",
+      "cer": 0.75,
+      "kana_ref": "タケガイイ",
+      "kana_hyp": "タケガイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "亀がいい。",
+      "hyp": "カメがいい",
+      "cer": 0.5,
+      "kana_ref": "カメガイイ",
+      "kana_hyp": "カメガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "瓶がいい。",
+      "hyp": "ビンガイ",
+      "cer": 1.0,
+      "kana_ref": "ビンガイイ",
+      "kana_hyp": "ビンガイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "鶴がいい。",
+      "hyp": "鶴がいい",
+      "cer": 0.0,
+      "kana_ref": "ツルガイイ",
+      "kana_hyp": "ツルガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "蔓がいい。",
+      "hyp": "鶴がいい",
+      "cer": 0.25,
+      "kana_ref": "ヅルガイイ",
+      "kana_hyp": "ツルガイイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "石がいい。",
+      "hyp": "石がいい",
+      "cer": 0.0,
+      "kana_ref": "イシガイイ",
+      "kana_hyp": "イシガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "医師がいい。",
+      "hyp": "美しいがいい",
+      "cer": 0.6,
+      "kana_ref": "イシガイイ",
+      "kana_hyp": "ウツクシイガイイ",
+      "cer_kana": 0.8
+    },
+    {
+      "text": "借りがいい。",
+      "hyp": "ガリガイ",
+      "cer": 1.0,
+      "kana_ref": "カリガイイ",
+      "kana_hyp": "ガリガイ",
+      "cer_kana": 0.4
+    },
+    {
+      "text": "狩りがいい。",
+      "hyp": "カリがいい",
+      "cer": 0.4,
+      "kana_ref": "カリガイイ",
+      "kana_hyp": "カリガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "城がいい。",
+      "hyp": "白がいい",
+      "cer": 0.25,
+      "kana_ref": "シロガイイ",
+      "kana_hyp": "シロガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "白がいい。",
+      "hyp": "シロがいい",
+      "cer": 0.5,
+      "kana_ref": "シロガイイ",
+      "kana_hyp": "シロガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "赤がいい。",
+      "hyp": "赤がいい",
+      "cer": 0.0,
+      "kana_ref": "アカガイイ",
+      "kana_hyp": "アカガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "垢がいい。",
+      "hyp": "赤がいい",
+      "cer": 0.25,
+      "kana_ref": "アカガイイ",
+      "kana_hyp": "アカガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "塩がいい。",
+      "hyp": "塩がいい",
+      "cer": 0.0,
+      "kana_ref": "シオガイイ",
+      "kana_hyp": "シオガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "潮がいい。",
+      "hyp": "塩がいい",
+      "cer": 0.25,
+      "kana_ref": "シオガイイ",
+      "kana_hyp": "シオガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "法がいい。",
+      "hyp": "ほうがいい",
+      "cer": 0.5,
+      "kana_ref": "ホーガイイ",
+      "kana_hyp": "ホーガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "砲がいい。",
+      "hyp": "ほうがいい",
+      "cer": 0.5,
+      "kana_ref": "ホーガイイ",
+      "kana_hyp": "ホーガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "報がいい。",
+      "hyp": "ほがいい",
+      "cer": 0.25,
+      "kana_ref": "ホーガイイ",
+      "kana_hyp": "ホガイイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "賞がいい。",
+      "hyp": "しょうがいい",
+      "cer": 0.75,
+      "kana_ref": "ショーガイイ",
+      "kana_hyp": "ショーガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "症がいい。",
+      "hyp": "しょうがいい",
+      "cer": 0.75,
+      "kana_ref": "ショーガイイ",
+      "kana_hyp": "ショーガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "商がいい。",
+      "hyp": "しょうがいい",
+      "cer": 0.75,
+      "kana_ref": "ショーガイイ",
+      "kana_hyp": "ショーガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "缶がいい。",
+      "hyp": "勘がいい",
+      "cer": 0.25,
+      "kana_ref": "カンガイイ",
+      "kana_hyp": "カンガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "巻がいい。",
+      "hyp": "マキがいい",
+      "cer": 0.5,
+      "kana_ref": "マキガイイ",
+      "kana_hyp": "マキガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "寒がいい。",
+      "hyp": "勘がいい",
+      "cer": 0.25,
+      "kana_ref": "カンガイイ",
+      "kana_hyp": "カンガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "線がいい。",
+      "hyp": "せんかい",
+      "cer": 0.75,
+      "kana_ref": "センガイイ",
+      "kana_hyp": "センカイ",
+      "cer_kana": 0.4
+    },
+    {
+      "text": "栓がいい。",
+      "hyp": "センガイ",
+      "cer": 1.0,
+      "kana_ref": "センガイイ",
+      "kana_hyp": "センガイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "町がいい。",
+      "hyp": "がいい",
+      "cer": 0.25,
+      "kana_ref": "マチガイイ",
+      "kana_hyp": "ガイイ",
+      "cer_kana": 0.4
+    },
+    {
+      "text": "待ちがいい。",
+      "hyp": "間違い",
+      "cer": 0.8,
+      "kana_ref": "マチガイイ",
+      "kana_hyp": "マチガイ",
+      "cer_kana": 0.2
+    },
+    {
+      "text": "旗がいい。",
+      "hyp": "あたかい",
+      "cer": 0.75,
+      "kana_ref": "ハタガイイ",
+      "kana_hyp": "アタカイ",
+      "cer_kana": 0.6
+    },
+    {
+      "text": "機がいい。",
+      "hyp": "ちがい",
+      "cer": 0.5,
+      "kana_ref": "キガイイ",
+      "kana_hyp": "チガイ",
+      "cer_kana": 0.5
+    },
+    {
+      "text": "川がいい。",
+      "hyp": "川がいい",
+      "cer": 0.0,
+      "kana_ref": "カワガイイ",
+      "kana_hyp": "カワガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "皮がいい。",
+      "hyp": "皮がいい",
+      "cer": 0.0,
+      "kana_ref": "カワガイイ",
+      "kana_hyp": "カワガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "土がいい。",
+      "hyp": "土がいい",
+      "cer": 0.0,
+      "kana_ref": "ツチガイイ",
+      "kana_hyp": "ツチガイイ",
+      "cer_kana": 0.0
+    },
+    {
+      "text": "槌がいい。",
+      "hyp": "土がいい",
+      "cer": 0.25,
+      "kana_ref": "ヅチガイイ",
+      "kana_hyp": "ツチガイイ",
+      "cer_kana": 0.2
+    }
+  ]
+}

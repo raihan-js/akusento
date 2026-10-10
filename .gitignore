@@ -9,3 +9,5 @@ mlruns/
 runs/
 *.wav
 *.mp3
+.venv-tts/
+results/*.wav

@@ -32,7 +32,24 @@ def extract_f0(wav: np.ndarray, sr: int, frame_ms: float = 5.0) -> dict[str, Any
 
 
 def load_wav_mono(path: str, target_sr: int = 16000) -> tuple[np.ndarray, int]:
-    import librosa
+    """Load + resample to mono target_sr with scipy only (no librosa).
 
-    y, _ = librosa.load(path, sr=target_sr, mono=True)
-    return y.astype(np.float32), target_sr
+    (librosa 1.x needs numpy 2, which breaks pyopenjtalk's ABI in this env;
+    TTS deps live in a separate venv — see docs/decisions.md.)
+    """
+    from scipy.io import wavfile
+    from scipy.signal import resample_poly
+
+    sr, y = wavfile.read(path)
+    y = np.asarray(y, dtype=np.float32)
+    if y.ndim > 1:
+        y = y.mean(axis=1)
+    # Normalize int16 -> [-1, 1].
+    if y.dtype == np.float32 and np.abs(y).max() > 1.0:
+        y = y / 32768.0
+    if sr != target_sr:
+        from math import gcd
+
+        g = gcd(sr, target_sr)
+        y = resample_poly(y, target_sr // g, sr // g).astype(np.float32)
+    return y, target_sr

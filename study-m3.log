@@ -1,0 +1,260 @@
+/home/raihan/Desktop/APPS/research-learn/akusento/.venv-tts/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:  84%|████████▎ | 334/399 [00:00<00:00, 3243.95it/s]Loading weights: 100%|██████████| 399/399 [00:00<00:00, 3252.92it/s]
+10-10 23:51:34 |  INFO  | bert_models.py:92 | Loaded the Languages.JP BERT model from data/sbv2-bert/deberta-v2-large-japanese-char-wwm
+10-10 23:51:34 |  INFO  | bert_models.py:154 | Loaded the Languages.JP BERT tokenizer from data/sbv2-bert/deberta-v2-large-japanese-char-wwm
+10-10 23:51:35 |  INFO  | infer.py:24 | Using JP-Extra model
+/home/raihan/Desktop/APPS/research-learn/akusento/.venv-tts/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:145: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+10-10 23:51:35 |  INFO  | safetensors.py:50 | Loaded 'data/sbv2/jvnv-F1-jp/jvnv-F1-jp_e160_s14000.safetensors' (iteration 160)
+10-10 23:51:35 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+箸がいい。
+10-10 23:51:36 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:51:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+橋がいい。
+10-10 23:51:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:51:51 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+端がいい。
+10-10 23:51:52 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:51:57 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+嘴がいい。
+10-10 23:51:57 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:52:03 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+雨がいい。
+10-10 23:52:03 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:52:11 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+飴がいい。
+10-10 23:52:11 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:52:17 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+酒がいい。
+10-10 23:52:17 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:52:23 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+鮭がいい。
+10-10 23:52:23 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:52:28 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+柿がいい。
+10-10 23:52:29 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:52:47 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+牡蠣がいい。
+10-10 23:52:47 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:52:53 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+垣がいい。
+10-10 23:52:53 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:53:01 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+花がいい。
+10-10 23:53:01 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:53:16 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+鼻がいい。
+10-10 23:53:16 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:53:35 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+神がいい。
+10-10 23:53:35 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:53:43 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+紙がいい。
+10-10 23:53:43 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:53:49 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+髪がいい。
+10-10 23:53:49 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:53:57 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+雲がいい。
+10-10 23:53:57 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:54:05 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+蜘蛛がいい。
+10-10 23:54:05 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:54:10 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+足がいい。
+10-10 23:54:11 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:54:16 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+脚がいい。
+10-10 23:54:17 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:54:23 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+葦がいい。
+10-10 23:54:23 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:54:29 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+桃がいい。
+10-10 23:54:29 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:54:55 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+腿がいい。
+10-10 23:54:55 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:01 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+隅がいい。
+10-10 23:55:01 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:09 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+炭がいい。
+10-10 23:55:09 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:15 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+竹がいい。
+10-10 23:55:15 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:21 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+丈がいい。
+10-10 23:55:21 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:27 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+亀がいい。
+10-10 23:55:27 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:33 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+瓶がいい。
+10-10 23:55:33 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:39 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+鶴がいい。
+10-10 23:55:39 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:45 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+蔓がいい。
+10-10 23:55:45 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:51 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+石がいい。
+10-10 23:55:51 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:55:57 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+医師がいい。
+10-10 23:55:57 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:56:03 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+借りがいい。
+10-10 23:56:03 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:56:13 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+狩りがいい。
+10-10 23:56:13 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:56:31 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+城がいい。
+10-10 23:56:31 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:56:37 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+白がいい。
+10-10 23:56:38 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:56:43 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+赤がいい。
+10-10 23:56:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:56:49 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+垢がいい。
+10-10 23:56:49 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:56:55 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+塩がいい。
+10-10 23:56:55 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:01 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+潮がいい。
+10-10 23:57:01 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:07 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+法がいい。
+10-10 23:57:07 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:13 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+砲がいい。
+10-10 23:57:13 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:23 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+報がいい。
+10-10 23:57:23 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:29 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+賞がいい。
+10-10 23:57:29 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:35 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+症がいい。
+10-10 23:57:35 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:41 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+商がいい。
+10-10 23:57:41 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:47 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+缶がいい。
+10-10 23:57:47 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:53 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+巻がいい。
+10-10 23:57:53 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:57:59 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+寒がいい。
+10-10 23:57:59 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:58:18 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+線がいい。
+10-10 23:58:18 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:58:26 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+栓がいい。
+10-10 23:58:26 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:58:32 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+町がいい。
+10-10 23:58:32 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:58:51 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+待ちがいい。
+10-10 23:58:51 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:58:57 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+旗がいい。
+10-10 23:58:57 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:03 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+機がいい。
+10-10 23:59:03 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:09 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+川がいい。
+10-10 23:59:09 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:16 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+皮がいい。
+10-10 23:59:16 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:22 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+土がいい。
+10-10 23:59:22 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:28 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+槌がいい。
+10-10 23:59:28 |  INFO  | tts_model.py:324 | Audio data generated successfully
+{"cer": 1.3862, "n": 60}
+/home/raihan/Desktop/APPS/research-learn/akusento/.venv-tts/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:  83%|████████▎ | 331/399 [00:00<00:00, 3299.81it/s]Loading weights: 100%|██████████| 399/399 [00:00<00:00, 3403.87it/s]
+10-10 23:59:40 |  INFO  | bert_models.py:92 | Loaded the Languages.JP BERT model from data/sbv2-bert/deberta-v2-large-japanese-char-wwm
+10-10 23:59:40 |  INFO  | bert_models.py:154 | Loaded the Languages.JP BERT tokenizer from data/sbv2-bert/deberta-v2-large-japanese-char-wwm
+10-10 23:59:40 |  INFO  | infer.py:24 | Using JP-Extra model
+/home/raihan/Desktop/APPS/research-learn/akusento/.venv-tts/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:145: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+10-10 23:59:41 |  INFO  | safetensors.py:50 | Loaded 'data/sbv2/jvnv-F1-jp/jvnv-F1-jp_e160_s14000.safetensors' (iteration 160)
+10-10 23:59:41 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+箸で橋を渡る。
+10-10 23:59:42 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:42 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+雨が降る中、飴を舐めた。
+10-10 23:59:42 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:42 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+今日は良い天気ですね。
+10-10 23:59:42 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:42 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+神楽坂をあとにし、次の選挙のため、全国を遊説して回る。
+10-10 23:59:43 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:43 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+東京都に行きます。
+10-10 23:59:43 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:43 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+この料理はとても美味しいです。
+10-10 23:59:43 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:43 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+明日は会議があります。
+10-10 23:59:43 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:43 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+彼女の声はとても綺麗だ。
+10-10 23:59:43 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:43 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+新幹線は速い乗り物だ。
+10-10 23:59:43 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:43 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+日本語の発音は難しい。
+10-10 23:59:43 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:43 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+彼は毎朝ジョギングをする。
+10-10 23:59:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+この本は面白かった。
+10-10 23:59:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+映画を見に行こう。
+10-10 23:59:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+音楽を聴くのが好きだ。
+10-10 23:59:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+友達と旅行に行った。
+10-10 23:59:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+美味しい寿司が食べたい。
+10-10 23:59:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+富士山は美しい山だ。
+10-10 23:59:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+桜が満開になった。
+10-10 23:59:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+夏休みに海へ行く。
+10-10 23:59:44 |  INFO  | tts_model.py:324 | Audio data generated successfully
+10-10 23:59:44 |  INFO  | tts_model.py:259 | Start generating audio data from text:
+おはようございます。
+10-10 23:59:45 |  INFO  | tts_model.py:324 | Audio data generated successfully
+wrote 20 MOS samples + results/mos_sample.csv

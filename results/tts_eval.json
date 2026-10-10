@@ -1,0 +1,19 @@
+{
+  "groups_kept": 22,
+  "groups_dropped": 21,
+  "auto": {
+    "agree": 92,
+    "contradict": 35,
+    "unclear": 41
+  },
+  "control_vs_forced": {
+    "agree": 75,
+    "contradict": 53,
+    "unclear": 32
+  },
+  "control_vs_auto": {
+    "agree": 66,
+    "contradict": 57,
+    "unclear": 45
+  }
+}
