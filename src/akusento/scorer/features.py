@@ -61,8 +61,10 @@ def phrase_feature_matrix(f0: npt.NDArray[np.float64], t: npt.NDArray[np.float64
     ctx = []
     for j in range(n_morae):
         cur = pm[j] if pm[j] is not None else pmed
-        prevm = pm[j - 1] if j > 0 and pm[j - 1] is not None else pmed
-        nextm = pm[j + 1] if j + 1 < n_morae and pm[j + 1] is not None else pmed
+        pv = pm[j - 1] if j > 0 else None
+        prevm = pv if pv is not None else pmed
+        nv = pm[j + 1] if j + 1 < n_morae else None
+        nextm = nv if nv is not None else pmed
         if pmed <= 0:
             ctx.append([0.0, 0.0, 0.0])
         else:
