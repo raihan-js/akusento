@@ -4,7 +4,6 @@ from pathlib import Path
 
 import numpy as np
 from scipy.io import wavfile
-
 from style_bert_vits2.constants import Languages
 from style_bert_vits2.nlp.japanese.g2p import g2p
 from style_bert_vits2.tts_model import TTSModel

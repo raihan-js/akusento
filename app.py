@@ -18,7 +18,8 @@ APP_DIR = Path(__file__).resolve().parent
 def _load_scorer():
     import pickle
 
-    d = pickle.load(open(APP_DIR / "models" / "scorer.pkl", "rb"))
+    with open(APP_DIR / "models" / "scorer.pkl", "rb") as f:
+        d = pickle.load(f)
     return d["scaler"], d["clf"]
 
 
@@ -51,8 +52,9 @@ def hear_pair(word):
     import sys
 
     sys.path.insert(0, str(APP_DIR / "src"))
-    from akusento.labels.accent import extract
     from style_bert_vits2.nlp.japanese.g2p import g2p
+
+    from akusento.labels.accent import extract
 
     model = hear_pair._model if hasattr(hear_pair, "_model") else setattr(hear_pair, "_model", _load_tts()) or hear_pair._model
     text = word.strip() + "。"
@@ -75,9 +77,9 @@ def check_recording(word, audio):
     import sys
 
     sys.path.insert(0, str(APP_DIR / "src"))
-    from akusento.labels.accent import extract, split_morae
+    from akusento.labels.accent import extract
     from akusento.labels.f0 import extract_f0
-    from akusento.scorer.features import FEATURE_NAMES, mora_features
+    from akusento.scorer.features import mora_features
 
     if not word or not word.strip() or audio is None:
         return "type a word and record audio first", ""
@@ -89,8 +91,9 @@ def check_recording(word, audio):
     if wav.ndim > 1:
         wav = wav.mean(axis=1)
     if sr != 16000:
-        from scipy.signal import resample_poly
         from math import gcd
+
+        from scipy.signal import resample_poly
 
         g = gcd(sr, 16000)
         wav = resample_poly(wav, 16000 // g, sr // g).astype(np.float32)

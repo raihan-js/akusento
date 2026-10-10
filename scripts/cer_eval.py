@@ -8,11 +8,10 @@ rows. Writes results/cer.json. (jiwer-free: tiny edit-distance inline.)
 from pathlib import Path
 
 import numpy as np
-from scipy.io import wavfile
-
-from tone_swap import load_model
 from minimal_pairs import GROUPS
+from scipy.io import wavfile
 from style_bert_vits2.nlp.japanese.g2p import g2p
+from tone_swap import load_model
 
 
 def edit(a: str, b: str) -> int:
@@ -59,7 +58,7 @@ def main():
         for w in words:
             s = f"{w}がいい。"
             try:
-                phones, _, _ = g2p(s)
+                g2p(s)
             except Exception:  # noqa: BLE001
                 continue
             sr, wav = model.infer(text=s, line_split=False)

@@ -11,12 +11,10 @@ Writes results/tts_eval.json.
 
 from pathlib import Path
 
-import numpy as np
+from minimal_pairs import GROUPS
 from scipy.io import wavfile
-
 from style_bert_vits2.nlp.japanese.g2p import g2p
 from tone_swap import load_model, phone_f0
-from minimal_pairs import GROUPS
 
 
 def dir_agree(tones, f0):

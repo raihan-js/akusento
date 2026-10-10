@@ -9,12 +9,10 @@ from pathlib import Path
 
 import numpy as np
 from scipy.io import wavfile
-
 from style_bert_vits2.constants import Languages
 from style_bert_vits2.nlp import bert_models
 from style_bert_vits2.nlp.japanese.g2p import g2p
 from style_bert_vits2.tts_model import TTSModel
-
 from tts_spike import BERT, CONFIG, MODEL, STYLE
 
 CASES = ["箸が。", "橋が。", "雨が。", "飴が。"]
@@ -43,8 +41,9 @@ def phone_f0(wav, sr, n_phones):
     import numpy as np
 
     if sr != 16000:
-        from scipy.signal import resample_poly
         from math import gcd
+
+        from scipy.signal import resample_poly
 
         g = gcd(sr, 16000)
         wav = resample_poly(wav.astype(np.float32), 16000 // g, sr // g)

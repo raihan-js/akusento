@@ -9,9 +9,8 @@ from pathlib import Path
 
 import numpy as np
 from scipy.io import wavfile
-
-from tone_swap import load_model, phone_f0
 from style_bert_vits2.nlp.japanese.g2p import g2p
+from tone_swap import load_model, phone_f0
 
 PAIRS = [("箸が。", "橋が。"), ("雨が。", "飴が。")]
 
