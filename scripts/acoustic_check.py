@@ -81,8 +81,8 @@ def main(csv_path: str = "results/fluent_check.csv") -> None:
     for line in Path("results/labels_500.jsonl").read_text(encoding="utf-8").splitlines():
         r = json.loads(line)
         labels[r["utt_id"]] = r.get("phrases", [])
-    rows = list(csv.DictReader(open(csv_path, encoding="utf-8")))
-    filled = 0
+    with open(csv_path, encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))    filled = 0
     with open("results/acoustic_check.jsonl", "w", encoding="utf-8") as jf:
         for r in rows:
             uid = r["utt_id"]

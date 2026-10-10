@@ -41,7 +41,7 @@ def load(path: str | Path) -> tuple[StandardScaler, LogisticRegression, dict]:
     import pickle
 
     with open(path, "rb") as f:
-        d = pickle.load(f)  # noqa: S301 - own artifact, documented
+        d = pickle.load(f)
     return d["scaler"], d["clf"], d["meta"]
 
 
