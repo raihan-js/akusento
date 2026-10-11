@@ -13,7 +13,12 @@ from typing import Any
 
 from akusento.labels.accent import _parse_row
 
-_LAB_RE = re.compile(r"^(\d+)\s+(\d+)\s+(.+)$")
+_LAB_RE = re.compile(r"^(\S+)\s+(\S+)\s+(.+)$")
+
+
+def _to_sec(tok: str) -> float:
+    v = float(tok)
+    return v / 1e7 if "." not in tok else v  # jsut-lab: 100ns ints; JVS: seconds
 
 
 def parse_lab(path: str | Path) -> list[dict[str, Any]]:
@@ -23,7 +28,7 @@ def parse_lab(path: str | Path) -> list[dict[str, Any]]:
         m = _LAB_RE.match(line.strip())
         if not m:
             continue
-        start, end = int(m.group(1)) / 1e7, int(m.group(2)) / 1e7
+        start, end = _to_sec(m.group(1)), _to_sec(m.group(2))
         p3, a, fid = _parse_row(m.group(3))
         out.append({"start": start, "end": end, "phon": p3, "a": a, "fid": fid})
     return out

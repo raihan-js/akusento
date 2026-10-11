@@ -1,0 +1,51 @@
+{
+  "speakers": {
+    "jvs001": {
+      "acc": 0.7163,
+      "n": 4128
+    },
+    "jvs002": {
+      "acc": 0.7252,
+      "n": 4076
+    },
+    "jvs003": {
+      "acc": 0.7004,
+      "n": 4096
+    },
+    "jvs004": {
+      "acc": 0.7407,
+      "n": 4069
+    },
+    "jvs005": {
+      "acc": 0.6538,
+      "n": 3911
+    },
+    "jvs007": {
+      "acc": 0.6941,
+      "n": 4011
+    },
+    "jvs008": {
+      "acc": 0.7238,
+      "n": 4044
+    },
+    "jvs009": {
+      "acc": 0.6884,
+      "n": 3922
+    },
+    "jvs010": {
+      "acc": 0.7524,
+      "n": 3994
+    },
+    "jvs011": {
+      "acc": 0.7285,
+      "n": 3992
+    }
+  },
+  "overall": 0.7126,
+  "n": 40243,
+  "by_gender": {
+    "M": 0.6978,
+    "F": 0.7272
+  },
+  "note": "JSUT-trained (1 female speaker); JVS speakers unseen. jvs006 skipped (empty lab/ful upstream)."
+}
